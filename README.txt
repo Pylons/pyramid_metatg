@@ -8,15 +8,22 @@ TurboGears uses a model whereby a tree of "controllers" is traversed and
 subsequently one of the methods of the "final" traversed controller is called
 to return a response.  This differs from default Pyramid behavior inasmuch as
 the objects traversed by the default Pyramid traverser ("resources") are not
-assumed to have response-generating logic as methods.  Instead, under the
-default Pyramid traversal regime, after a "context" resource is found a
-"view" is found by introspecting the type of the context resource and
-matching it against a separate registry of view functions / methods /
-instances.  TurboGears conflates these two steps, so in order to emulate
-TG-style object dispatch, the Pyramid traverser is replaced with one that
-returns a controller and a default view is registered against all Controller
-objects; this default view finds the "right" method of the returned
-controller to use to generate a response and calls it.
+assumed to have response-generating logic as methods.
+
+Under the default Pyramid traversal regime, after a "context" resource is
+found via traversal, its job is done.  A separate subsystem ("view lookup")
+takes over after the context resource has been found.  View lookup is handed
+the context object; its responsibility is to find a view callable by
+introspecting the type of the context resource and matching it against a
+separate registry of view functions / methods / instances.  It then invokes
+the view callable, which returns a response.
+
+TurboGears conflates the traversal and view lookup steps as "object
+dispatch".  Thus, in order to emulate TG-style object dispatch, the Pyramid
+traverser is replaced with one that returns a controller and a default view
+is registered against all Controller objects; this default view finds the
+"right" method of the returned controller to use to generate a response and
+calls it.
 
 This package provides an alternate traverser, a view implementation that is
 used for all Controller objects resulting from traversal , and a paster
