@@ -1,0 +1,21 @@
+from pyramid_metatg import Controller
+from pyramid_metatg import expose
+
+class SubController(Controller):
+
+    @expose('templates/mytemplate.pt')
+    def index(self):
+        return {'project':'{{project}}',
+                'controller':self}
+
+class RootController(Controller):
+
+    sub = SubController()
+
+    @expose('templates/mytemplate.pt')
+    def index(self):
+        return {'project':'{{project}}',
+                'controller':self}
+
+def root_factory(request):
+    return RootController()

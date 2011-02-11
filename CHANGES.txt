@@ -1,0 +1,7 @@
+tgmeta Changelog
+===============
+
+(unreleased)
+------------
+
+- Initial release.
