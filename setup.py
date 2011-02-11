@@ -8,7 +8,7 @@ CHANGES = open(os.path.join(here, 'CHANGES.txt')).read()
 
 setup(name='pyramid_metatg',
       version='0.0',
-      description="TurboGears2-like object dispatch for Pyramid",
+      description="TurboGears2-like object dispatch for Pyramid (example)",
       long_description=README + '\n\n' +  CHANGES,
       classifiers=[
         "Intended Audience :: Developers",
