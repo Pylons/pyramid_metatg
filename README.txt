@@ -22,6 +22,6 @@ Trying it out
 
 4.  ``python setup.py develop``
 
-5.  ``paster serve myproject.ini``
+5.  ``paster serve development.ini``
 
 Visit the browser on 6543.
