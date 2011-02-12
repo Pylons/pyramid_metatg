@@ -174,7 +174,6 @@ class Test_includeme(unittest.TestCase):
 
     def test_it(self):
         from pyramid.config import Configurator
-        from pyramid_metatg import includeme
         from pyramid.interfaces import IViewClassifier
         from pyramid.interfaces import IView
         from pyramid.interfaces import ITraverser
@@ -186,9 +185,9 @@ class Test_includeme(unittest.TestCase):
 
         config = Configurator(autocommit=True)
 
-        # did it add the view?
         self._callFUT(config)
-        includeme(config)
+
+        # did it add the view?
         view = config.registry.adapters.lookup(
             (IViewClassifier, IRequest, IController),
             IView, default=None)
