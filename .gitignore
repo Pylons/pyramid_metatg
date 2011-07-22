@@ -16,3 +16,7 @@ jyenv/
 pypyenv/
 build/
 dist/
+.tox/
+coverage.xml
+nosetests.xml
+
