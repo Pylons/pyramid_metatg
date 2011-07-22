@@ -191,7 +191,7 @@ class Test_includeme(unittest.TestCase):
         view = config.registry.adapters.lookup(
             (IViewClassifier, IRequest, IController),
             IView, default=None)
-        self.assertEqual(view, controller_view)
+        self.assertEqual(view.__original_view__, controller_view)
 
         # did it register the traverser?
         controller = Controller()
